@@ -58,7 +58,6 @@ final class TCPServer implements Server
             throw new RuntimeException("Server already started.");
         }
 
-
         $this->logger->debug('[server] initializing server', [
             'port' => $this->port
         ]);

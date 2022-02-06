@@ -1,14 +1,13 @@
 #!/usr/bin/env php
 <?php
 
+use Flow\ETL\Async\ReactPHP\Worker\TCPClient;
 use Flow\Serializer\CompressingSerializer;
 use Flow\Serializer\NativePHPSerializer;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Symfony\Component\Console\Application;
 use Flow\ETL\Async\Symfony\Worker\WorkerCommand;
-
-require __DIR__ . '/../vendor/autoload.php';
 
 (function () {
     \error_reporting(E_ALL);
@@ -35,13 +34,16 @@ require __DIR__ . '/../vendor/autoload.php';
     $logger->pushHandler(new StreamHandler(__DIR__ . '/../var/logs/client_' . getmypid() .'.log', Logger::DEBUG));
     $logger->pushHandler(new StreamHandler(__DIR__ . '/../var/logs/client_error_' . getmypid() .'.log', Logger::ERROR, false));
 
-    $logger = new \Psr\Log\NullLogger();
+//    $logger = new \Psr\Log\NullLogger();
 
     try {
         $serializer = new CompressingSerializer(new NativePHPSerializer());
         $application = new Application();
 
-        $command = new WorkerCommand($logger, $serializer);
+        $command = new WorkerCommand(
+            $logger,
+            new TCPClient($logger, $serializer)
+        );
 
         $application->add($command);
         $application->setDefaultCommand($command->getName(), true);
