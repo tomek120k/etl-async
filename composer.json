@@ -8,15 +8,14 @@
         "php": "^7.4.2 || ~8.0",
         "ext-json": "*",
         "aeon-php/calendar": "^1.0",
-        "clue/ndjson-react": "^1.2",
-        "flow-php/etl": "1.x-dev",
+        "flow-php/etl": "dev-poc/serialization as 1.x-dev",
         "flow-php/etl-adapter-memory": "1.x-dev",
         "psr/log": "^1.1",
         "ramsey/uuid": "^4.2"
     },
     "require-dev": {
         "flow-php/array-dot": "^1.0@dev",
-        "flow-php/etl-transformer": "^1.x-dev",
+        "flow-php/etl-transformer": "dev-poc/serialization",
         "monolog/monolog": "^2.3",
         "react/child-process": "^0.6.4",
         "react/socket": "^1.11",

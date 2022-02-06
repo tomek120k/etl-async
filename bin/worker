@@ -1,11 +1,12 @@
 #!/usr/bin/env php
 <?php
 
+use Flow\Serializer\CompressingSerializer;
+use Flow\Serializer\NativePHPSerializer;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
-use Psr\Log\LogLevel;
 use Symfony\Component\Console\Application;
-use Flow\ETL\Symfony\Command\Worker;
+use Flow\ETL\Async\Symfony\Worker\WorkerCommand;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -34,13 +35,20 @@ require __DIR__ . '/../vendor/autoload.php';
     $logger->pushHandler(new StreamHandler(__DIR__ . '/../var/logs/client_' . getmypid() .'.log', Logger::DEBUG));
     $logger->pushHandler(new StreamHandler(__DIR__ . '/../var/logs/client_error_' . getmypid() .'.log', Logger::ERROR, false));
 
-    //$logger = new \Psr\Log\NullLogger();
+    $logger = new \Psr\Log\NullLogger();
 
-    $application = new Application();
+    try {
+        $serializer = new CompressingSerializer(new NativePHPSerializer());
+        $application = new Application();
 
-    $command = new Worker($logger);
+        $command = new WorkerCommand($logger, $serializer);
 
-    $application->add($command);
-    $application->setDefaultCommand($command->getName(), true);
-    $application->run();
+        $application->add($command);
+        $application->setDefaultCommand($command->getName(), true);
+        $application->run();
+    } catch (\Throwable $e) {
+        $logger->error('[worker] worker exception: ' . $e->getMessage(), [
+            'exception' => $e
+        ]);
+    }
 })();

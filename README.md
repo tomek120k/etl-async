@@ -52,10 +52,11 @@ Working example:
 ```php
 <?php
 
+use Flow\ETL\Async\LocalPipeline;
+use Flow\ETL\Async\ReactPHP\Worker\ChildProcessLauncher;
+use Flow\ETL\Async\ReactPHP\Server\TCPServer;
 use Flow\ETL\ETL;
-use Flow\ETL\Extractor;
-use Flow\ETL\Row;
-use Flow\ETL\Row\Entry\ArrayEntry;
+use Flow\ETL\Loader;
 use Flow\ETL\Rows;
 use Flow\ETL\Transformer\ArrayUnpackTransformer;
 use Flow\ETL\Transformer\Cast\CastToInteger;
@@ -97,7 +98,13 @@ $logger = new Logger('server');
 $logger->pushHandler(new StreamHandler(__DIR__ . '/var/logs/server.log', Logger::DEBUG));
 $logger->pushHandler(new StreamHandler(__DIR__ . '/var/logs/server_error.log', Logger::ERROR, false));
 
-ETL::extract($extractor, new AsyncLocalPipeline(__DIR__ . "/bin/worker", $port = 6651, $workers = 10, $logger))
+$pipeline = new LocalPipeline(
+    new TCPServer($port = 6651, $logger),
+    new ChildProcessLauncher(__DIR__ . "/bin/worker", $port, $logger),
+    $workers = 10
+);
+
+ETL::extract($extractor, $pipeline)
     ->transform(new ArrayUnpackTransformer('row'))
     ->transform(new RemoveEntriesTransformer('row'))
     ->transform(new CastTransformer(new CastToInteger(['id'])))
