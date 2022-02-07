@@ -2,16 +2,16 @@
 <?php
 
 use Flow\ETL\Async\ReactPHP\Worker\TCPClient;
+use Flow\ETL\Async\Worker\CLI;
+use Flow\ETL\Async\Worker\CLI\Input;
 use Flow\Serializer\CompressingSerializer;
 use Flow\Serializer\NativePHPSerializer;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
-use Symfony\Component\Console\Application;
-use Flow\ETL\Async\Symfony\Worker\WorkerCommand;
 
-(function () {
-    \error_reporting(E_ALL);
-    \ini_set('display_errors', 'stderr');
+(function (array $argv){
+    error_reporting(E_ALL);
+    ini_set('display_errors', 'stderr');
 
     if (is_file($autoload = getcwd() . '/vendor/autoload.php')) {
         require $autoload;
@@ -30,27 +30,16 @@ use Flow\ETL\Async\Symfony\Worker\WorkerCommand;
         exit(1);
     }
 
+
     $logger = new Logger('client');
     $logger->pushHandler(new StreamHandler(__DIR__ . '/../var/logs/client_' . getmypid() .'.log', Logger::DEBUG));
     $logger->pushHandler(new StreamHandler(__DIR__ . '/../var/logs/client_error_' . getmypid() .'.log', Logger::ERROR, false));
 
 //    $logger = new \Psr\Log\NullLogger();
 
-    try {
-        $serializer = new CompressingSerializer(new NativePHPSerializer());
-        $application = new Application();
+    $serializer = new CompressingSerializer(new NativePHPSerializer());
 
-        $command = new WorkerCommand(
-            $logger,
-            new TCPClient($logger, $serializer)
-        );
+    $cli = new CLI($logger, new TCPClient($logger, $serializer));
 
-        $application->add($command);
-        $application->setDefaultCommand($command->getName(), true);
-        $application->run();
-    } catch (\Throwable $e) {
-        $logger->error('[worker] worker exception: ' . $e->getMessage(), [
-            'exception' => $e
-        ]);
-    }
-})();
+    exit($cli->run(new Input($argv)));
+})($argv);

@@ -8,8 +8,8 @@ Current implementation is based on following external libraries:
     - Event Loop 
     - Socket Server/Client 
     - Child Process
-* Symfony 
-    - Console
+* <s>Symfony 
+    - Console</s>
     
 The end goal is to provide interfaces for the following components
 
@@ -25,8 +25,8 @@ That would become a technical implementation of the following elements:
 - Communication Protocol
 - Serializer
 
-Symfony Console at this stage is used just to parse CLI Application input options (3-4 options max) 
-It's so simple task that eventually Symfony dependency should be dropped in favour internal CLI Worker Application.   
+<s>Symfony Console at this stage is used just to parse CLI Application input options (3-4 options max) 
+It's so simple task that eventually Symfony dependency should be dropped in favour internal CLI Worker Application.</s>   
 
 More advanced configuration of Worker should be possible through environment variables or custom implementations taking
 advantage of predefined entry points. 

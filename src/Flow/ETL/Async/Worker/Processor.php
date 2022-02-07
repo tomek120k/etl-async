@@ -6,7 +6,6 @@ namespace Flow\ETL\Async\Worker;
 
 use Aeon\Calendar\Stopwatch;
 use Flow\ETL\ETL;
-use Flow\ETL\Extractor;
 use Flow\ETL\Loader;
 use Flow\ETL\Pipeline\Pipes;
 use Flow\ETL\Rows;
@@ -41,21 +40,7 @@ final class Processor
             'id' => $this->workerId
         ]);
 
-        $etl = ETL::extract(
-            new class($rows) implements Extractor {
-                private Rows $rows;
-
-                public function __construct(Rows $rows)
-                {
-                    $this->rows = $rows;
-                }
-
-                public function extract() : \Generator
-                {
-                    yield $this->rows;
-                }
-            }
-        );
+        $etl = ETL::process($rows);
 
         foreach ($this->pipes->all() as $pipe) {
             if ($pipe instanceof Transformer) {
@@ -65,38 +50,16 @@ final class Processor
             }
         }
 
-        $etl->load(
-            $loader = new class implements Loader {
-                public Rows $rows;
-
-                public function __construct()
-                {
-                    $this->rows = new Rows();
-                }
-
-                public function load(Rows $rows) : void
-                {
-                    $this->rows = $rows;
-                }
-
-                public function __serialize(): array
-                {
-                    return [];
-                }
-
-                public function __unserialize(array $data): void
-                {
-                }
-            })
-            ->run();
+        $transformerRows = $etl->fetch();
 
         $stopwatch->stop();
         $this->logger->debug('[worker] processed', [
-            'rows' => $rows->count(),
             'id' => $this->workerId,
-            'time_s' => $stopwatch->totalElapsedTime()->inSecondsPrecise()
+            'rows' => $rows->count(),
+            'transformer_rows' => $transformerRows->count(),
+            'time_sec' => $stopwatch->totalElapsedTime()->inSecondsPrecise()
         ]);
 
-        return $loader->rows;
+        return $transformerRows;
     }
 }
