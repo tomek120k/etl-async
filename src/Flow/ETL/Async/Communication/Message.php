@@ -13,7 +13,7 @@ final class Message implements Serializable
     private string $type;
 
     /**
-     * @var array<array<mixed>>
+     * @var array<string, mixed>
      */
     private array $payload;
 
@@ -23,19 +23,23 @@ final class Message implements Serializable
         $this->payload = $payload;
     }
 
-    public static function clientIdentify(string $id) : self
+    public static function identify(string $id) : self
     {
         return new self(
             Protocol::CLIENT_IDENTIFY,
-            ['id' => $id]
+            [
+                'id' => $id,
+            ]
         );
     }
 
-    public static function serverPipes(Pipes $pipes) : self
+    public static function pipes(Pipes $pipes) : self
     {
         return new self(
             Protocol::SERVER_PIPES,
-            ['pipes' => $pipes]
+            [
+                'pipes' => $pipes,
+            ]
         );
     }
 
@@ -47,41 +51,39 @@ final class Message implements Serializable
         );
     }
 
-    public static function rows(Rows $rows)
+    public static function process(Rows $rows) : self
     {
         return new self(
             Protocol::SERVER_PROCESS,
             [
-                'rows' => $rows
+                'rows' => $rows,
             ]
         );
     }
 
-    public static function processed(Rows $rows)
+    public static function processed(Rows $rows) : self
     {
         return new self(
             Protocol::CLIENT_PROCESSED,
             [
-                'rows' => $rows
+                'rows' => $rows,
             ]
         );
     }
 
     /**
-     * @return array{id: String, payload: array<mixed>}
+     * @return array{id: string, payload: array<string, mixed>}
      */
     public function __serialize() : array
     {
         return [
             'type' => $this->type,
-            'payload' => $this->payload
+            'payload' => $this->payload,
         ];
     }
 
-
     /**
-     * @param array{id: String, payload: array<mixed>} $data
-     * @return static
+     * @param array{id: string, payload: array<string, mixed>} $data
      */
     public function __unserialize(array $data) : void
     {
@@ -92,15 +94,15 @@ final class Message implements Serializable
     /**
      * @return string
      */
-    public function type(): string
+    public function type() : string
     {
         return $this->type;
     }
 
     /**
-     * @return array<array<mixed>>
+     * @return array<string, mixed>
      */
-    public function payload(): array
+    public function payload() : array
     {
         return $this->payload;
     }

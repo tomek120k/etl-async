@@ -164,12 +164,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/flow-php/etl-adapter-memory.git",
-                "reference": "c4f701b484b6999fc16cbe007b3cc8834d2367d3"
+                "reference": "8f2b7ea324e1c16aff190e8149b8efeb09aa16fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flow-php/etl-adapter-memory/zipball/c4f701b484b6999fc16cbe007b3cc8834d2367d3",
-                "reference": "c4f701b484b6999fc16cbe007b3cc8834d2367d3",
+                "url": "https://api.github.com/repos/flow-php/etl-adapter-memory/zipball/8f2b7ea324e1c16aff190e8149b8efeb09aa16fb",
+                "reference": "8f2b7ea324e1c16aff190e8149b8efeb09aa16fb",
                 "shasum": ""
             },
             "require": {
@@ -201,7 +201,7 @@
                 "issues": "https://github.com/flow-php/etl-adapter-memory/issues",
                 "source": "https://github.com/flow-php/etl-adapter-memory/tree/1.x"
             },
-            "time": "2022-02-04T04:11:31+00:00"
+            "time": "2022-02-08T04:13:26+00:00"
         },
         {
             "name": "psr/log",
@@ -729,12 +729,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/flow-php/array-dot.git",
-                "reference": "bfc81550f9b3e586412684baa564e2ab4a2dbea9"
+                "reference": "f473d791f4c9ab5551cbfa7762f9c2408ab6adb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flow-php/array-dot/zipball/bfc81550f9b3e586412684baa564e2ab4a2dbea9",
-                "reference": "bfc81550f9b3e586412684baa564e2ab4a2dbea9",
+                "url": "https://api.github.com/repos/flow-php/array-dot/zipball/f473d791f4c9ab5551cbfa7762f9c2408ab6adb4",
+                "reference": "f473d791f4c9ab5551cbfa7762f9c2408ab6adb4",
                 "shasum": ""
             },
             "require": {
@@ -770,7 +770,7 @@
                 "issues": "https://github.com/flow-php/array-dot/issues",
                 "source": "https://github.com/flow-php/array-dot/tree/1.x"
             },
-            "time": "2022-02-03T21:15:54+00:00"
+            "time": "2022-02-07T21:21:50+00:00"
         },
         {
             "name": "flow-php/etl-transformer",

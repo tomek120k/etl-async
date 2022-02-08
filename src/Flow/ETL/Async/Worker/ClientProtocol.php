@@ -20,21 +20,30 @@ final class ClientProtocol
     {
         switch ($message->type()) {
             case Protocol::SERVER_PIPES:
+                /**
+                 * @psalm-suppress MixedArgument
+                 * @phpstan-ignore-next-line
+                 */
                 $this->processor->setPipes($message->payload()['pipes']);
 
                 $server->send(Message::fetch());
 
                 break;
             case Protocol::SERVER_PROCESS:
+                /**
+                 * @psalm-suppress MixedArgument
+                 * @phpstan-ignore-next-line
+                 */
                 $rows = $this->processor->process($message->payload()['rows']);
 
                 $server->send(Message::processed($rows));
+
                 break;
         }
     }
 
     public function identify(string $id, Server $server) : void
     {
-        $server->send(Message::clientIdentify($id));
+        $server->send(Message::identify($id));
     }
 }

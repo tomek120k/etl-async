@@ -6,8 +6,8 @@ namespace Flow\ETL\Async\ReactPHP\Server;
 
 use Aeon\Calendar\Stopwatch;
 use Flow\ETL\Async\Communication\Message;
-use Flow\ETL\Async\Server\ServerProtocol;
 use Flow\ETL\Async\Server\Server;
+use Flow\ETL\Async\Server\ServerProtocol;
 use Flow\ETL\Exception\RuntimeException;
 use Flow\Serializer\CompressingSerializer;
 use Flow\Serializer\NativePHPSerializer;
@@ -44,8 +44,7 @@ final class TCPServer implements Server
         $this->logger = $logger;
         $this->serializer = $serializer === null
             ? new CompressingSerializer(new NativePHPSerializer())
-            : $serializer
-        ;
+            : $serializer;
         $this->loop = null;
         $this->server = null;
         $this->stopwatch = null;
@@ -55,17 +54,17 @@ final class TCPServer implements Server
     public function initialize(ServerProtocol $protocol) : void
     {
         if ($this->server) {
-            throw new RuntimeException("Server already started.");
+            throw new RuntimeException('Server already started.');
         }
 
         $this->logger->debug('[server] initializing server', [
-            'port' => $this->port
+            'port' => $this->port,
         ]);
 
         $this->loop = new StreamSelectLoop();
         $this->server = new ReactTCPServer("127.0.0.1:{$this->port}", $this->loop);
 
-        $this->server->on('connection', function (ConnectionInterface $connection) use ($protocol): void {
+        $this->server->on('connection', function (ConnectionInterface $connection) use ($protocol) : void {
             $this->connections[] = $connection;
             $this->logger->debug('[server] client connected', ['address' => $connection->getRemoteAddress()]);
 
@@ -76,8 +75,8 @@ final class TCPServer implements Server
                     'address' => $connection->getRemoteAddress(),
                     'message' => [
                         'type' => $message->type(),
-                        'size' => \strlen($data)
-                    ]
+                        'size' => \strlen($data),
+                    ],
                 ]);
 
                 $protocol->handle($message, new TCPClient($connection, $this->serializer), $this);
@@ -95,25 +94,24 @@ final class TCPServer implements Server
         });
     }
 
-    public function start(): void
+    public function start() : void
     {
         if ($this->loop === null) {
-            throw new RuntimeException("Server already stopped.");
+            throw new RuntimeException('Server already stopped.');
         }
 
         $this->stopwatch = new Stopwatch();
         $this->stopwatch->start();
-
 
         $this->logger->debug('[server] starting server');
 
         $this->loop->run();
     }
 
-    public function stop(): void
+    public function stop() : void
     {
         if ($this->server === null) {
-            throw new RuntimeException("Server already stopped.");
+            throw new RuntimeException('Server already stopped.');
         }
 
         $this->stopwatch->stop();

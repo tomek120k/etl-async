@@ -21,7 +21,7 @@ final class TCPServer implements Server
         $this->serializer = $serializer;
     }
 
-    public function send(Message $message): void
+    public function send(Message $message) : void
     {
         $this->connection->write(
             $this->serializer->serialize($message)

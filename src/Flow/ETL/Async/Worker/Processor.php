@@ -16,7 +16,9 @@ use Psr\Log\LogLevel;
 final class Processor
 {
     private string $workerId;
+
     private LoggerInterface $logger;
+
     private Pipes $pipes;
 
     public function __construct(string $workerId, LoggerInterface $logger)
@@ -37,7 +39,7 @@ final class Processor
         $stopwatch->start();
         $this->logger->log(LogLevel::DEBUG, '[worker] processing', [
             'rows' => $rows->count(),
-            'id' => $this->workerId
+            'id' => $this->workerId,
         ]);
 
         $etl = ETL::process($rows);
@@ -57,7 +59,7 @@ final class Processor
             'id' => $this->workerId,
             'rows' => $rows->count(),
             'transformer_rows' => $transformerRows->count(),
-            'time_sec' => $stopwatch->totalElapsedTime()->inSecondsPrecise()
+            'time_sec' => $stopwatch->totalElapsedTime()->inSecondsPrecise(),
         ]);
 
         return $transformerRows;

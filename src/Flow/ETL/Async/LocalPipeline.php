@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Flow\ETL\Async;
 
-use Flow\ETL\Async\Server\ServerProtocol;
 use Flow\ETL\Async\Server\Server;
+use Flow\ETL\Async\Server\ServerProtocol;
 use Flow\ETL\Async\Worker\Launcher;
 use Flow\ETL\Async\Worker\Pool;
 use Flow\ETL\ErrorHandler;
@@ -22,6 +22,9 @@ final class LocalPipeline implements Pipeline
 
     private int $totalWorkers;
 
+    /**
+     * @phpstan-ignore-next-line
+     */
     private ErrorHandler $errorHandler;
 
     private Pipes $pipes;
@@ -36,6 +39,7 @@ final class LocalPipeline implements Pipeline
         $this->launcher = $launcher;
         $this->totalWorkers = $workers;
         $this->pipes = Pipes::empty();
+        $this->errorHandler = new ErrorHandler\IgnoreError();
     }
 
     public function clean() : Pipeline

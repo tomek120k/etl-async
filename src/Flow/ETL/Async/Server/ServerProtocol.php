@@ -8,26 +8,31 @@ use Flow\ETL\Async\Communication\Message;
 use Flow\ETL\Async\Communication\Protocol;
 use Flow\ETL\Async\Worker\Pool;
 use Flow\ETL\Pipeline\Pipes;
+use Flow\ETL\Rows;
 
 final class ServerProtocol
 {
     private Pool $workers;
 
+    /**
+     * @var \Generator<int, Rows, mixed, void>
+     */
     private \Generator $rows;
 
     private Pipes $pipes;
 
     /**
-     * @var ?callable(Rows $rows) : void
+     * @var ?callable(Rows) : void
      */
     private $callback;
 
     /**
      * MessageHandler constructor.
+     *
      * @param Pool $workers
-     * @param \Generator $rows
+     * @param \Generator<int, Rows, mixed, void> $rows
      * @param Pipes $pipes
-     * @param ?callable(Rows $rows) : void $callback
+     * @param null|callable(Rows $rows) : void $callback
      */
     public function __construct(Pool $workers, \Generator $rows, Pipes $pipes, ?callable $callback = null)
     {
@@ -41,13 +46,18 @@ final class ServerProtocol
     {
         switch ($message->type()) {
             case Protocol::CLIENT_IDENTIFY:
+                /** @phpstan-ignore-next-line  */
+                if ($this->workers->has((string) $message->payload()['id'])) {
+                    $client->send(Message::pipes($this->pipes));
+                } else {
+                    $client->disconnect();
+                }
 
-                $client->send(Message::serverPipes($this->pipes));
                 break;
             case Protocol::CLIENT_FETCH:
 
                 if ($this->rows->valid()) {
-                    $client->send(Message::rows($this->rows->current()));
+                    $client->send(Message::process($this->rows->current()));
                     $this->rows->next();
                 } else {
                     $server->stop();
@@ -56,11 +66,14 @@ final class ServerProtocol
                 break;
             case Protocol::CLIENT_PROCESSED:
                 if ($this->callback !== null) {
+                    /**
+                     * @psalm-suppress MixedArgument
+                     */
                     ($this->callback)($message->payload()['rows']);
                 }
 
-                if ($this->rows->valid() && $server) {
-                    $client->send(Message::rows($this->rows->current()));
+                if ($this->rows->valid()) {
+                    $client->send(Message::process($this->rows->current()));
                     $this->rows->next();
                 } else {
                     $server->stop();

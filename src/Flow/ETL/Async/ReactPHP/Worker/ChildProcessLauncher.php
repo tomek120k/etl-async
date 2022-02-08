@@ -28,7 +28,7 @@ final class ChildProcessLauncher implements Launcher
         $this->port = $port;
     }
 
-    public function launch(Pool $pool): void
+    public function launch(Pool $pool) : void
     {
         foreach ($pool->ids() as $id) {
             $stringId = $id->toString();

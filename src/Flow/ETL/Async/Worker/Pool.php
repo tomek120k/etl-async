@@ -16,6 +16,7 @@ final class Pool
 
     /**
      * Pool constructor.
+     *
      * @param array<UuidInterface> $ids
      */
     private function __construct(array $ids)
@@ -29,8 +30,9 @@ final class Pool
 
     public static function generate(int $size) : self
     {
+        /** @psalm-suppress UnusedClosureParam */
         return new self(
-            \array_map(fn () => Uuid::uuid4(), \range(0, $size))
+            \array_map(fn (int $i) => Uuid::uuid4(), \range(0, $size))
         );
     }
 
@@ -42,7 +44,7 @@ final class Pool
     /**
      * @return UuidInterface[]
      */
-    public function ids(): array
+    public function ids() : array
     {
         return $this->ids;
     }

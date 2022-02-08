@@ -19,18 +19,18 @@ use React\Socket\TcpConnector;
 final class TCPClient implements Client
 {
     private Serializer $serializer;
+
     private LoggerInterface $logger;
 
     public function __construct(LoggerInterface $logger, ?Serializer $serializer = null)
     {
         $this->serializer = $serializer === null
             ? new CompressingSerializer(new NativePHPSerializer())
-            : $serializer
-        ;
+            : $serializer;
         $this->logger = $logger;
     }
 
-    public function connect(string $id, string $host, int $port, ClientProtocol $protocol): void
+    public function connect(string $id, string $host, int $port, ClientProtocol $protocol) : void
     {
         $stopwatch = new Stopwatch();
         $stopwatch->start();
@@ -38,7 +38,7 @@ final class TCPClient implements Client
         $this->logger->debug('[client] connecting to server', [
             'id' => $id,
             'host' => $host,
-            'port' => $port
+            'port' => $port,
         ]);
 
         $loop = new StreamSelectLoop();
@@ -48,9 +48,9 @@ final class TCPClient implements Client
         $connector
             ->connect("{$host}:{$port}")
             ->then(
-                function (ConnectionInterface $connection) use ($id, $loop, $protocol) : void {
+                function (ConnectionInterface $connection) use ($id, $protocol) : void {
                     $this->logger->debug('[client] connected to server ', [
-                        'address' => $connection->getLocalAddress()
+                        'address' => $connection->getLocalAddress(),
                     ]);
 
                     $server = new TCPServer($connection, $this->serializer);
@@ -62,8 +62,8 @@ final class TCPClient implements Client
                         $this->logger->debug('[client] received from server', [
                             'message' => [
                                 'type' => $message->type(),
-                                'size' => \strlen($data)
-                            ]
+                                'size' => \strlen($data),
+                            ],
                         ]);
 
                         $protocol->handle($message, $server);
@@ -82,7 +82,7 @@ final class TCPClient implements Client
                 },
                 function (\Throwable $error) : void {
                     $this->logger->error('[client] connection closed due to internal error', [
-                        'exception' => $error
+                        'exception' => $error,
                     ]);
                 }
             );
@@ -91,8 +91,10 @@ final class TCPClient implements Client
 
         $stopwatch->stop();
 
-        $this->logger->debug('[client] client stopped', [
-            'total_connection_time_sec' => $stopwatch->totalElapsedTime()->inSecondsPrecise()]
+        $this->logger->debug(
+            '[client] client stopped',
+            [
+                'total_connection_time_sec' => $stopwatch->totalElapsedTime()->inSecondsPrecise(), ]
         );
     }
 }

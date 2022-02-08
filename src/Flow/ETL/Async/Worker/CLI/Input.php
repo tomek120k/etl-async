@@ -6,17 +6,23 @@ namespace Flow\ETL\Async\Worker\CLI;
 
 final class Input
 {
+    /**
+     * @var array<string>
+     */
     private array $argv;
 
+    /**
+     * @param array<string> $argv
+     */
     public function __construct(array $argv)
     {
         $this->argv = $argv;
     }
 
-    public function optionValue(string $name, $default = null) : ?string
+    public function optionValue(string $name, string $default = null) : ?string
     {
         foreach ($this->argv as $arg) {
-            $parts = \explode("=", $arg);
+            $parts = \explode('=', $arg);
 
             if (\count($parts) !== 2) {
                 continue;
@@ -30,6 +36,9 @@ final class Input
         return $default;
     }
 
+    /**
+     * @return array<string>
+     */
     public function argv() : array
     {
         return $this->argv;

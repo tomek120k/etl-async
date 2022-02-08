@@ -21,12 +21,12 @@ final class TCPClient implements Client
         $this->serializer = $serializer;
     }
 
-    public function send(Message $message): void
+    public function send(Message $message) : void
     {
         $this->connection->write($this->serializer->serialize($message));
     }
 
-    public function disconnect(): void
+    public function disconnect() : void
     {
         $this->connection->close();
     }
