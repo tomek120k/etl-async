@@ -23,6 +23,6 @@
   "phpUnit": {
     "customPath": "tools\/vendor\/bin\/phpunit"
   },
-  "minMsi": 60,
+  "minMsi": 30,
   "minCoveredMsi": 60
 }

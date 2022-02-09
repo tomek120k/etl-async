@@ -164,12 +164,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/flow-php/etl-adapter-memory.git",
-                "reference": "8f2b7ea324e1c16aff190e8149b8efeb09aa16fb"
+                "reference": "d731e9ba5a333258352947b0f0b19ce01d61c0db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flow-php/etl-adapter-memory/zipball/8f2b7ea324e1c16aff190e8149b8efeb09aa16fb",
-                "reference": "8f2b7ea324e1c16aff190e8149b8efeb09aa16fb",
+                "url": "https://api.github.com/repos/flow-php/etl-adapter-memory/zipball/d731e9ba5a333258352947b0f0b19ce01d61c0db",
+                "reference": "d731e9ba5a333258352947b0f0b19ce01d61c0db",
                 "shasum": ""
             },
             "require": {
@@ -201,7 +201,7 @@
                 "issues": "https://github.com/flow-php/etl-adapter-memory/issues",
                 "source": "https://github.com/flow-php/etl-adapter-memory/tree/1.x"
             },
-            "time": "2022-02-08T04:13:26+00:00"
+            "time": "2022-02-09T08:02:00+00:00"
         },
         {
             "name": "psr/log",
@@ -778,12 +778,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/flow-php/etl-transformer.git",
-                "reference": "f7637475d6bf82d40d841d1001668a8e177b3412"
+                "reference": "d99d64f7c5076c79d8a5d2f7b398df59eb8beea1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flow-php/etl-transformer/zipball/f7637475d6bf82d40d841d1001668a8e177b3412",
-                "reference": "f7637475d6bf82d40d841d1001668a8e177b3412",
+                "url": "https://api.github.com/repos/flow-php/etl-transformer/zipball/d99d64f7c5076c79d8a5d2f7b398df59eb8beea1",
+                "reference": "d99d64f7c5076c79d8a5d2f7b398df59eb8beea1",
                 "shasum": ""
             },
             "require": {
@@ -793,7 +793,7 @@
                 "php": "^7.4 | ^8.0"
             },
             "require-dev": {
-                "flow-php/etl-adapter-json": "^1.0@dev",
+                "flow-php/etl-adapter-json": "dev-poc/serialization as 1.x-dev",
                 "jawira/case-converter": "^3.4",
                 "laminas/laminas-hydrator": "^4.0",
                 "symfony/validator": "^5.3"
@@ -827,7 +827,7 @@
                 "issues": "https://github.com/flow-php/etl-transformer/issues",
                 "source": "https://github.com/flow-php/etl-transformer/tree/poc/serialization"
             },
-            "time": "2022-02-06T15:38:59+00:00"
+            "time": "2022-02-09T12:02:07+00:00"
         },
         {
             "name": "monolog/monolog",
