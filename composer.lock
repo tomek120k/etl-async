@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8bca999e6655472e3240a2881f5b83e5",
+    "content-hash": "8a35adf338f2dff5e66bfff184ab84a1",
     "packages": [
         {
             "name": "aeon-php/calendar",
@@ -117,22 +117,23 @@
         },
         {
             "name": "flow-php/etl",
-            "version": "dev-poc/serialization",
+            "version": "1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/flow-php/etl.git",
-                "reference": "d3fa12d88acaae9809b0bc618320e35e0f44b5ca"
+                "reference": "22a7b708e099339324a7d797e700af0258fc5663"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flow-php/etl/zipball/d3fa12d88acaae9809b0bc618320e35e0f44b5ca",
-                "reference": "d3fa12d88acaae9809b0bc618320e35e0f44b5ca",
+                "url": "https://api.github.com/repos/flow-php/etl/zipball/22a7b708e099339324a7d797e700af0258fc5663",
+                "reference": "22a7b708e099339324a7d797e700af0258fc5663",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
                 "php": "^7.4.2 || ~8.0"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -154,9 +155,9 @@
             ],
             "support": {
                 "issues": "https://github.com/flow-php/etl/issues",
-                "source": "https://github.com/flow-php/etl/tree/poc/serialization"
+                "source": "https://github.com/flow-php/etl/tree/1.x"
             },
-            "time": "2022-02-07T20:41:42+00:00"
+            "time": "2022-02-12T20:03:05+00:00"
         },
         {
             "name": "flow-php/etl-adapter-memory",
@@ -164,12 +165,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/flow-php/etl-adapter-memory.git",
-                "reference": "d731e9ba5a333258352947b0f0b19ce01d61c0db"
+                "reference": "1823bd166880500cfe03f9b4a02757fa2c154638"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flow-php/etl-adapter-memory/zipball/d731e9ba5a333258352947b0f0b19ce01d61c0db",
-                "reference": "d731e9ba5a333258352947b0f0b19ce01d61c0db",
+                "url": "https://api.github.com/repos/flow-php/etl-adapter-memory/zipball/1823bd166880500cfe03f9b4a02757fa2c154638",
+                "reference": "1823bd166880500cfe03f9b4a02757fa2c154638",
                 "shasum": ""
             },
             "require": {
@@ -201,7 +202,7 @@
                 "issues": "https://github.com/flow-php/etl-adapter-memory/issues",
                 "source": "https://github.com/flow-php/etl-adapter-memory/tree/1.x"
             },
-            "time": "2022-02-09T08:02:00+00:00"
+            "time": "2022-02-12T21:07:04+00:00"
         },
         {
             "name": "psr/log",
@@ -1121,22 +1122,23 @@
         },
         {
             "name": "flow-php/doctrine-dbal-bulk",
-            "version": "dev-poc/serialization",
+            "version": "1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/flow-php/doctrine-dbal-bulk.git",
-                "reference": "b5a048e59bfd0b788cc8c34e23d91bbf36fb1a9e"
+                "reference": "d27c2fde16dc6ef67fcd4ec51e5fc67e827881c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flow-php/doctrine-dbal-bulk/zipball/b5a048e59bfd0b788cc8c34e23d91bbf36fb1a9e",
-                "reference": "b5a048e59bfd0b788cc8c34e23d91bbf36fb1a9e",
+                "url": "https://api.github.com/repos/flow-php/doctrine-dbal-bulk/zipball/d27c2fde16dc6ef67fcd4ec51e5fc67e827881c4",
+                "reference": "d27c2fde16dc6ef67fcd4ec51e5fc67e827881c4",
                 "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "^2.12 | ^3.1.4",
                 "php": "^7.4 | ^8.0"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1159,35 +1161,36 @@
             ],
             "support": {
                 "issues": "https://github.com/flow-php/doctrine-dbal-bulk/issues",
-                "source": "https://github.com/flow-php/doctrine-dbal-bulk/tree/poc/serialization"
+                "source": "https://github.com/flow-php/doctrine-dbal-bulk/tree/1.x"
             },
-            "time": "2022-02-12T11:45:50+00:00"
+            "time": "2022-02-12T20:55:04+00:00"
         },
         {
             "name": "flow-php/etl-adapter-doctrine",
-            "version": "dev-poc/serialization",
+            "version": "1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/flow-php/etl-adapter-doctrine.git",
-                "reference": "88490eaf89089e3850b1e6fa50b6e15a18b468e2"
+                "reference": "c1883e5ed438a52bd08d522da8de8e3f3ff8b9b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flow-php/etl-adapter-doctrine/zipball/88490eaf89089e3850b1e6fa50b6e15a18b468e2",
-                "reference": "88490eaf89089e3850b1e6fa50b6e15a18b468e2",
+                "url": "https://api.github.com/repos/flow-php/etl-adapter-doctrine/zipball/c1883e5ed438a52bd08d522da8de8e3f3ff8b9b7",
+                "reference": "c1883e5ed438a52bd08d522da8de8e3f3ff8b9b7",
                 "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "^2.12 | ^3.1.4",
-                "flow-php/etl": "dev-poc/serialization as 1.x-dev",
+                "flow-php/etl": "^1.0@dev",
                 "php": "^7.4.2 | ^8.0"
             },
             "require-dev": {
-                "flow-php/doctrine-dbal-bulk": "dev-poc/serialization as 1.x-dev"
+                "flow-php/doctrine-dbal-bulk": "^1.0@dev"
             },
             "suggest": {
                 "flow-php/doctrine-dbal-bulk": "Allows DbalBulkLoader to insert data in bulks into database"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1212,32 +1215,32 @@
             ],
             "support": {
                 "issues": "https://github.com/flow-php/etl-adapter-doctrine/issues",
-                "source": "https://github.com/flow-php/etl-adapter-doctrine/tree/poc/serialization"
+                "source": "https://github.com/flow-php/etl-adapter-doctrine/tree/1.x"
             },
-            "time": "2022-02-12T12:14:04+00:00"
+            "time": "2022-02-12T21:00:38+00:00"
         },
         {
             "name": "flow-php/etl-transformer",
-            "version": "dev-poc/serialization",
+            "version": "1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/flow-php/etl-transformer.git",
-                "reference": "d99d64f7c5076c79d8a5d2f7b398df59eb8beea1"
+                "reference": "587777884ba333c8373c7f2c855f06b87822af15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flow-php/etl-transformer/zipball/d99d64f7c5076c79d8a5d2f7b398df59eb8beea1",
-                "reference": "d99d64f7c5076c79d8a5d2f7b398df59eb8beea1",
+                "url": "https://api.github.com/repos/flow-php/etl-transformer/zipball/587777884ba333c8373c7f2c855f06b87822af15",
+                "reference": "587777884ba333c8373c7f2c855f06b87822af15",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "flow-php/array-dot": "^1.0@dev",
-                "flow-php/etl": "dev-poc/serialization as 1.x-dev",
+                "flow-php/etl": "^1.0@dev",
                 "php": "^7.4 | ^8.0"
             },
             "require-dev": {
-                "flow-php/etl-adapter-json": "dev-poc/serialization as 1.x-dev",
+                "flow-php/etl-adapter-json": "^1.0@dev",
                 "jawira/case-converter": "^3.4",
                 "laminas/laminas-hydrator": "^4.0",
                 "symfony/validator": "^5.3"
@@ -1247,6 +1250,7 @@
                 "laminas/laminas-hydrator": "Help converting ObjectEntry into ArrayEntry that can be later unpack into standalone Entries",
                 "ocramius/generated-hydrator": "Provieds generated hydrator that implemenets Laminas\\Hydrator\\HydratorInterface"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1269,9 +1273,9 @@
             ],
             "support": {
                 "issues": "https://github.com/flow-php/etl-transformer/issues",
-                "source": "https://github.com/flow-php/etl-transformer/tree/poc/serialization"
+                "source": "https://github.com/flow-php/etl-transformer/tree/1.x"
             },
-            "time": "2022-02-09T12:02:07+00:00"
+            "time": "2022-02-12T21:05:35+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2060,14 +2064,7 @@
             "time": "2021-07-11T12:37:55+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "flow-php/etl",
-            "version": "dev-poc/serialization",
-            "alias": "1.x-dev",
-            "alias_normalized": "1.9999999.9999999.9999999-dev"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "flow-php/etl": 20,
