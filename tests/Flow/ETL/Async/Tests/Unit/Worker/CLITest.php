@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Flow\ETL\Async\Tests\Unit\Worker;
 
-use Flow\ETL\Async\Worker\CLI;
-use Flow\ETL\Async\Worker\Client;
+use Flow\ETL\Async\Client\CLI;
+use Flow\ETL\Async\Client\Client;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 

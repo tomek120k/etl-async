@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Flow\ETL\Async\Tests\Unit\Worker;
 
-use Flow\ETL\Async\Worker\Processor;
+use Flow\ETL\Async\Client\Processor;
 use Flow\ETL\Pipeline\Pipes;
 use Flow\ETL\Row;
 use Flow\ETL\Rows;

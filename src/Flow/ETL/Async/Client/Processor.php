@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Flow\ETL\Async\Worker;
+namespace Flow\ETL\Async\Client;
 
 use Aeon\Calendar\Stopwatch;
 use Flow\ETL\ETL;

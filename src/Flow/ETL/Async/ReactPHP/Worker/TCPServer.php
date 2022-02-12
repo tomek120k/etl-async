@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Flow\ETL\Async\ReactPHP\Worker;
 
 use Flow\ETL\Async\Communication\Message;
-use Flow\ETL\Async\Worker\Server;
+use Flow\ETL\Async\Client\Server;
 use Flow\Serializer\Serializer;
 use React\Socket\ConnectionInterface;
 

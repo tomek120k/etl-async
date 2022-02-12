@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Flow\ETL\Async\Tests\Unit\Worker;
 
 use Flow\ETL\Async\Communication\Message;
-use Flow\ETL\Async\Worker\ClientProtocol;
-use Flow\ETL\Async\Worker\Processor;
-use Flow\ETL\Async\Worker\Server;
+use Flow\ETL\Async\Client\ClientProtocol;
+use Flow\ETL\Async\Client\Processor;
+use Flow\ETL\Async\Client\Server;
 use Flow\ETL\Pipeline\Pipes;
 use Flow\ETL\Row;
 use Flow\ETL\Rows;

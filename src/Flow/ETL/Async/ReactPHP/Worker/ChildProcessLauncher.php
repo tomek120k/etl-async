@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Flow\ETL\Async\ReactPHP\Worker;
 
-use Flow\ETL\Async\Worker\Launcher;
-use Flow\ETL\Async\Worker\Pool;
+use Flow\ETL\Async\Client\Launcher;
+use Flow\ETL\Async\Client\Pool;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 use React\ChildProcess\Process;

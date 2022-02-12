@@ -2,8 +2,8 @@
 <?php
 
 use Flow\ETL\Async\ReactPHP\Worker\TCPClient;
-use Flow\ETL\Async\Worker\CLI;
-use Flow\ETL\Async\Worker\CLI\Input;
+use Flow\ETL\Async\Client\CLI;
+use Flow\ETL\Async\Client\CLI\Input;
 use Flow\Serializer\CompressingSerializer;
 use Flow\Serializer\NativePHPSerializer;
 use Monolog\Handler\StreamHandler;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Flow\ETL\Async\Tests\Unit\Worker\CLI;
 
-use Flow\ETL\Async\Worker\CLI\Input;
+use Flow\ETL\Async\Client\CLI\Input;
 use PHPUnit\Framework\TestCase;
 
 final class InputTest extends TestCase

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Flow\ETL\Async\Worker\CLI;
+namespace Flow\ETL\Async\Client\CLI;
 
 final class Input
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Flow\ETL\Async\Worker;
+namespace Flow\ETL\Async\Client;
 
-use Flow\ETL\Async\Worker\CLI\Input;
+use Flow\ETL\Async\Client\CLI\Input;
 use Psr\Log\LoggerInterface;
 
 final class CLI

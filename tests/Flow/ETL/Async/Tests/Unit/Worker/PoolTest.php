@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Flow\ETL\Async\Tests\Unit\Worker;
 
-use Flow\ETL\Async\Worker\Pool;
+use Flow\ETL\Async\Client\Pool;
 use PHPUnit\Framework\TestCase;
 
 final class PoolTest extends TestCase

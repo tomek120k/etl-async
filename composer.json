@@ -16,6 +16,8 @@
     "require-dev": {
         "flow-php/array-dot": "^1.0@dev",
         "flow-php/etl-transformer": "dev-poc/serialization",
+        "flow-php/etl-adapter-doctrine": "dev-poc/serialization",
+        "flow-php/doctrine-dbal-bulk": "dev-poc/serialization",
         "monolog/monolog": "^2.3",
         "react/child-process": "^0.6.4",
         "react/socket": "^1.11"
