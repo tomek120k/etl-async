@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Flow\ETL\Async\ReactPHP\Worker;
 
 use Aeon\Calendar\Stopwatch;
-use Flow\ETL\Async\Communication\Message;
 use Flow\ETL\Async\Client\Client;
 use Flow\ETL\Async\Client\ClientProtocol;
+use Flow\ETL\Async\Communication\Message;
 use Flow\Serializer\CompressingSerializer;
 use Flow\Serializer\NativePHPSerializer;
 use Flow\Serializer\Serializer;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Flow\ETL\Async\Tests\Unit\Worker\CLI;
+namespace Flow\ETL\Async\Tests\Unit\Client\CLI;
 
 use Flow\ETL\Async\Client\CLI\Input;
 use PHPUnit\Framework\TestCase;

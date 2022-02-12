@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Flow\ETL\Async;
 
-use Flow\ETL\Async\Server\Server;
-use Flow\ETL\Async\Server\ServerProtocol;
 use Flow\ETL\Async\Client\Launcher;
 use Flow\ETL\Async\Client\Pool;
+use Flow\ETL\Async\Server\Server;
+use Flow\ETL\Async\Server\ServerProtocol;
 use Flow\ETL\ErrorHandler;
 use Flow\ETL\Exception\InvalidArgumentException;
 use Flow\ETL\Pipeline;

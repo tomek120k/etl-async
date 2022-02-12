@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Flow\ETL\Async\Tests\Unit\Server;
 
+use Flow\ETL\Async\Client\Pool;
 use Flow\ETL\Async\Communication\Message;
 use Flow\ETL\Async\Server\Client;
 use Flow\ETL\Async\Server\Server;
 use Flow\ETL\Async\Server\ServerProtocol;
-use Flow\ETL\Async\Client\Pool;
 use Flow\ETL\Extractor\ProcessExtractor;
 use Flow\ETL\Pipeline\Pipes;
 use Flow\ETL\Rows;
