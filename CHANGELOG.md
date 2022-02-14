@@ -14,6 +14,7 @@
 - [8222f8](https://github.com/flow-php/etl-async/commit/8222f8bc8f2597debfd98ade1744154c720b3f3d) - **Proof of Concept** - [@norberttech](https://github.com/norberttech)
 
 ### Updated
+- [f8cc4a](https://github.com/flow-php/etl-async/commit/f8cc4a24b320434b8721cfaccacd6d0e7dabda6a) - **README.md** - [@norberttech](https://github.com/norberttech)
 - [855d6c](https://github.com/flow-php/etl-async/commit/855d6c811cde6e62f436906a18ce244cbc28df28) - **dependencies** - [@norberttech](https://github.com/norberttech)
 
 ### Removed
