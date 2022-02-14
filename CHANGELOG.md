@@ -1,6 +1,7 @@
-## [Unreleased] - 2022-02-13
+## [Unreleased] - 2022-02-14
 
 ### Added
+- [c6d467](https://github.com/flow-php/etl-async/commit/c6d467e3b3a0401af99e954b38221916ed492772) - **processing modes infographic** - [@norberttech](https://github.com/norberttech)
 - [091724](https://github.com/flow-php/etl-async/commit/091724883100b0e781b287535b049332bc538ed5) - **missing tests and github actions setup** - [@norberttech](https://github.com/norberttech)
 
 ### Changed
